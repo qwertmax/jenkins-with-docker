@@ -9,11 +9,11 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag qwertmax/jenkins-with-docker:$(date +%s)
+      run: docker build . --file Dockerfile --tag qwertmax/jenkins-with-docker:1.0
 
     - uses: actions/checkout@master
     - name: Publish to Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
     - name: Push the Docker image to the registry
-      run: docker push qwertmax/jenkins-with-docker:$(date +%s)
+      run: docker push qwertmax/jenkins-with-docker:1.0
