@@ -7,13 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Make Tag
+      run: echo ::set-env name=GITHUB_SHA_SHORT::$(date +%s)
+
     - uses: actions/checkout@master
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag qwertmax/jenkins-with-docker:1.0
+      run: docker build . --file Dockerfile --tag qwertmax/jenkins-with-docker:$GITHUB_SHA_SHORT
 
     - uses: actions/checkout@master
     - name: Publish to Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
     - name: Push the Docker image to the registry
-      run: docker push qwertmax/jenkins-with-docker:1.0
+      run: docker push qwertmax/jenkins-with-docker:$GITHUB_SHA_SHORT
