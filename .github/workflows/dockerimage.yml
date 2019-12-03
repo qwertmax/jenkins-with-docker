@@ -22,7 +22,7 @@ jobs:
       run: docker push qwertmax/jenkins-with-docker:$GITHUB_SHA_SHORT
 
     - name: Tag Docker latest image
-    - run: docker tag qwertmax/jenkins-with-docker:$GITHUB_SHA_SHORT qwertmax/jenkins-with-docker:latest
+      run: docker tag qwertmax/jenkins-with-docker:$GITHUB_SHA_SHORT qwertmax/jenkins-with-docker:latest
 
     - name: Push Docker latest tag
-    - run: docker push qwertmax/jenkins-with-docker:latest
+      run: docker push qwertmax/jenkins-with-docker:latest
