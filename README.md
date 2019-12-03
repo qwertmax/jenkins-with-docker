@@ -27,7 +27,7 @@ docker rm jenkins
 
 
 
-Dockerfile looke like this 
+`Dockerfile` looke like this 
 
 ```docker
 FROM jenkins/jenkins
