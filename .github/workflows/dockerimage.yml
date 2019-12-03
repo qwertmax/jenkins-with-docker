@@ -17,3 +17,4 @@ jobs:
 
     - name: Push the Docker image to the registry
       run: docker push qwertmax/jenkins-with-docker:$(date +%s)
+
